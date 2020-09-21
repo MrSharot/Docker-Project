@@ -29,13 +29,19 @@ if [ ! -e /etc/swift/account.builder ]; then
 	echo "No existing ring files, creating them..."
 
 	swift-ring-builder object.builder create ${SWIFT_PART_POWER} ${SWIFT_REPLICAS} ${SWIFT_PART_HOURS}
-	swift-ring-builder object.builder add r1z1-127.0.0.1:6010/sdb1 1
+	swift-ring-builder object.builder add z1-127.0.0.1:6010/sdb1 100
+	swift-ring-builder object.builder add z2-127.0.0.1:6010/sdb2 100
+	swift-ring-builder object.builder add z3-127.0.0.1:6010/sdb3 100
 	swift-ring-builder object.builder rebalance
 	swift-ring-builder container.builder create ${SWIFT_PART_POWER} ${SWIFT_REPLICAS} ${SWIFT_PART_HOURS}
-	swift-ring-builder container.builder add r1z1-127.0.0.1:6011/sdb1 1
+	swift-ring-builder container.builder add z1-127.0.0.1:6011/sdb1 100
+	swift-ring-builder container.builder add z2-127.0.0.1:6011/sdb2 100
+	swift-ring-builder container.builder add z3-127.0.0.1:6011/sdb3 100
 	swift-ring-builder container.builder rebalance
 	swift-ring-builder account.builder create ${SWIFT_PART_POWER} ${SWIFT_REPLICAS} ${SWIFT_PART_HOURS}
-	swift-ring-builder account.builder add r1z1-127.0.0.1:6012/sdb1 1
+	swift-ring-builder account.builder add z1-127.0.0.1:6012/sdb1 100
+	swift-ring-builder account.builder add z2-127.0.0.1:6012/sdb2 100
+	swift-ring-builder account.builder add z3-127.0.0.1:6012/sdb3 100
 	swift-ring-builder account.builder rebalance
 
 	# Back these up for later use
