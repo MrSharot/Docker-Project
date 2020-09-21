@@ -23,8 +23,8 @@ if [ ! -e /etc/swift/account.builder ]; then
 
 	cd /etc/swift
 
-	# 2^& = 128 we are assuming just one drive
-	# 1 replica only
+	# 2^& = 8 we are assuming just one drive
+	# 3 replicas only
 
 	echo "No existing ring files, creating them..."
 
@@ -67,6 +67,7 @@ if [ ! -z "${SWIFT_SET_PASSWORDS}" ]; then
 	sed -i -e "s/user_test_tester = testing .admin/user_test_tester = $PASS .admin/g" /etc/swift/proxy-server.conf
 	sed -i -e "s/user_test2_tester2 = testing2 .admin/user_test2_tester2 = $PASS .admin/g" /etc/swift/proxy-server.conf
 	sed -i -e "s/user_test_tester3 = testing3/user_test_tester3 = $PASS/g" /etc/swift/proxy-server.conf
+	sed -i -e "s/user_mir_me = batman007 .admin .reseller_admin/user_mir_me = $PASS .admin .reseller_admin/g" /etc/swift/proxy-server.conf
 	grep "user_test" /etc/swift/proxy-server.conf
 fi
 
