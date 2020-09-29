@@ -67,7 +67,7 @@ if [ ! -z "${SWIFT_SET_PASSWORDS}" ]; then
 	sed -i -e "s/user_test_tester = testing .admin/user_test_tester = $PASS .admin/g" /etc/swift/proxy-server.conf
 	sed -i -e "s/user_test2_tester2 = testing2 .admin/user_test2_tester2 = $PASS .admin/g" /etc/swift/proxy-server.conf
 	sed -i -e "s/user_test_tester3 = testing3/user_test_tester3 = $PASS/g" /etc/swift/proxy-server.conf
-	sed -i -e "s/user_suzana_me = suzana .admin .reseller_admin/user_suzana_me = $PASS .admin .reseller_admin/g" /etc/swift/proxy-server.conf
+	sed -i -e "s/user_rahman_me = rahman .admin .reseller_admin/user_rahman_me = $PASS .admin .reseller_admin/g" /etc/swift/proxy-server.conf
 	grep "user_test" /etc/swift/proxy-server.conf
 fi
 
